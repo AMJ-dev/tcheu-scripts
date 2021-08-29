@@ -22,7 +22,7 @@ done
 
 #Export remote database into a local file
 echo "Exporting remote DB"
-ssh $REMOTE_USER@$REMOTE_HOST "mysqldump --defaults-file=.creds-remote.cfg --skip-lock-tables -h $REMOTE_DB_HOST -P $REMOTE_DB_PORT --protocol=tcp  $IGNORED_TABLES_STRING $REMOTE_DB_SCHEMA" > $DUMP_FILE
+ssh $REMOTE_USER@$REMOTE_HOST "mysqldump --no-data --defaults-file=.creds-remote.cfg --skip-lock-tables -h $REMOTE_DB_HOST -P $REMOTE_DB_PORT --protocol=tcp  $IGNORED_TABLES_STRING $REMOTE_DB_SCHEMA" > $DUMP_FILE
 
 #Remove remote db config file
 ssh $REMOTE_USER@$REMOTE_HOST  "rm ./.creds-remote.cfg"
